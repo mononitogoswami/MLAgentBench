@@ -1,4 +1,4 @@
-# clrs benchmark dependecies
+# CLRS benchmark dependencies
 absl-py>=0.13.0
 attrs>=21.4.0
 chex>=0.0.8
@@ -16,16 +16,12 @@ torch>=2.0.0
 torchvision>=0.15.1
 transformers>=4.28.0
 dm-clrs @ git+git://github.com/deepmind/clrs.git
-# for gpu support https://github.com/deepmind/clrs/issues/98
+# For GPU support: https://github.com/deepmind/clrs/issues/98
 
-# images
+# Image processing
 pillow
 
-
-# common ml packages
-torch>=2.0.0
-torchvision
-transformers
+# Common ML packages
 scikit-learn
 xgboost
 keras
@@ -36,12 +32,10 @@ matplotlib
 seaborn
 tqdm
 kaggle
-# tensorrt
 
-# llm
+# LLM
 openai
 anthropic
-langchain
 sentencepiece
 spacy
 nltk
@@ -50,15 +44,13 @@ rouge-score
 peft
 accelerate
 evaluate
-vertaxai
 
-# graph
+# Graph
 torch-geometric==2.3.1
 ogb
 networkx
 
-
-#others
+# Others
 cchardet
 pytest
 dacite

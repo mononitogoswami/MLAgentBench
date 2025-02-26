@@ -7,44 +7,10 @@ from .schema import TooLongPromptError, LLMError
 
 enc = tiktoken.get_encoding("cl100k_base")
 
-try:
-    from helm.common.authentication import Authentication
-    from helm.common.request import Request, RequestResult
-    from helm.proxy.accounts import Account
-    from helm.proxy.services.remote_service import RemoteService
-    # setup CRFM API
-    auth = Authentication(api_key=open("crfm_api_key.txt").read().strip())
-    service = RemoteService("https://crfm-models.stanford.edu")
-    account: Account = service.get_account(auth)
-except Exception as e:
-    print(e)
-    print("Could not load CRFM API key crfm_api_key.txt.")
 
-try:   
-    import anthropic
-    # setup anthropic API key
-    anthropic_client = anthropic.Anthropic(api_key=open("claude_api_key.txt").read().strip())
-except Exception as e:
-    print(e)
-    print("Could not load anthropic API key claude_api_key.txt.")
-    
-try:
-    import openai
-    # setup OpenAI API key
-    openai.organization, openai.api_key  =  open("openai_api_key.txt").read().strip().split(":")    
-    os.environ["OPENAI_API_KEY"] = openai.api_key 
-except Exception as e:
-    print(e)
-    print("Could not load OpenAI API key openai_api_key.txt.")
-
-try:
-    import vertexai
-    from vertexai.preview.generative_models import GenerativeModel, Part
-    from google.cloud.aiplatform_v1beta1.types import SafetySetting, HarmCategory
-    vertexai.init(project=PROJECT_ID, location="us-central1")
-except Exception as e:
-    print(e)
-    print("Could not load VertexAI API.")
+import anthropic
+# anthropic_client = anthropic.Anthropic(api_key=open("claude_api_key.txt").read().strip())
+import openai
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers import StoppingCriteria, StoppingCriteriaList
